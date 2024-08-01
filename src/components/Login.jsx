@@ -20,7 +20,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post('http://localhost:1018/auth/login', values)
+            const res = await axios.post('https://ecom-backend-24cv.onrender.com/auth/login', values)
             console.log(res.data)
             localStorage.setItem('EccomTokenByPrabhat', res.data.token)
             window.location.href = '/dashboard'
@@ -39,7 +39,7 @@ function Login() {
             setError(null);
     
             try {
-                const { data } = await axios.post('http://localhost:1018/auth/signup', values);
+                const { data } = await axios.post('https://ecom-backend-24cv.onrender.com/auth/signup', values);
                 alert('Account registered successfully:', data);
             } catch (error) {
                 console.error('Error registering account:', error);

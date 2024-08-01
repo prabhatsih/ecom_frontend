@@ -9,7 +9,7 @@ function Product() {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get("http://localhost:1018/product")
+            const response = await axios.get("https://ecom-backend-24cv.onrender.com/product")
             setProducts(response.data)
         } catch (error) {
             console.log(error)
@@ -21,7 +21,7 @@ function Product() {
 
     const deleteProduct = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:1018/product/${id}`);
+            const response = await axios.delete(`https://ecom-backend-24cv.onrender.com/product/${id}`);
             if (response.status === 200) {
                 const updatedProducts = products.filter(product => product._id !== id);
                 setProducts(updatedProducts);
@@ -45,7 +45,7 @@ function Product() {
             brand: form.brand.value
         }
         try {
-            const { data } = await axios.post("http://localhost:1018/product", formdata)
+            const { data } = await axios.post("https://ecom-backend-24cv.onrender.com/product", formdata)
             console.log(data)
             form.reset();
             new Swal({
@@ -69,8 +69,8 @@ function Product() {
             const file = event.target.files[0];
             const formData = new FormData();
             formData.append('fileData', file);
-            const { data } = await axios.post('http://localhost:1018/storage', formData);
-            const response = await axios.put(`http://localhost:1018/product/${id}`, { thumbnail: data.filename });
+            const { data } = await axios.post('https://ecom-backend-24cv.onrender.com/storage', formData);
+            const response = await axios.put(`https://ecom-backend-24cv.onrender.com/product/${id}`, { thumbnail: data.filename });
             console.log(response.data);
             fetchProduct()
         } catch (err) {
@@ -176,7 +176,7 @@ function Product() {
                                             <Card.Img
                                                 variant="top"
                                                 onError={(e) => e.target.src = errorImg}
-                                                src={item.thumbnail ? `http://localhost:1018/${item.thumbnail}` : errorImg}
+                                                src={item.thumbnail ? `https://ecom-backend-24cv.onrender.com/${item.thumbnail}` : errorImg}
                                             />
                                             <input
                                                 type="file"
